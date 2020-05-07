@@ -6,12 +6,15 @@ class SudokuBoard
 {
     
     public:
+
         SudokuBoard();
+
         SudokuBoard(int& vals);
 
-        vector<vector<int>> getValues();
-
         void printValues();
+
+        vector<vector<int>> getValues() const;
+
     
     private:
         vector<vector<int>> values;

@@ -14,10 +14,10 @@ SudokuBoard::SudokuBoard() {
         };
         values.push_back(tmp);
     };
-    cout << to_string(values[5][3]) << endl;
+
 };
 
-vector<vector<int>> SudokuBoard::getValues() {
+vector<vector<int>> SudokuBoard::getValues() const {
     return values;
 };
 
