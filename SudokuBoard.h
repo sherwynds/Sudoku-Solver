@@ -9,14 +9,10 @@ class SudokuBoard
 
         SudokuBoard();
 
-        SudokuBoard(int& vals);
-
-        void printValues();
-
-        vector<vector<int>> getValues() const;
-
+        auto getValues();
     
     private:
-        vector<vector<int>> values;
+
+        int values[9][9];
 
 };

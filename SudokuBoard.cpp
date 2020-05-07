@@ -7,22 +7,26 @@ using namespace std;
 
 SudokuBoard::SudokuBoard() {
 
-    for(int i = 1; i <= 9; i++) {
-        vector<int> tmp;
-        for(int j = 1; j <= 9; j++) {
-            tmp.push_back(i*10 + j);
-        };
-        values.push_back(tmp);
-    };
+    int numCols = sizeof(values) / sizeof(values[0]);
+    int numRows = sizeof(values[0]) / sizeof(values[0][0]);
+    cout << "Cols = " << to_string(numCols) << " Rows = " << to_string(numRows) << endl;
 
+    for(int i = 0; i <= numCols; i++) {
+        for(int j = 0; j <= numRows; j++) {
+            values[i][j] = (i+1)*10 + (j+1);
+        }
+    }
+
+    cout << values[8][8] << endl;
 };
 
-vector<vector<int>> SudokuBoard::getValues() const {
-    return values;
+auto SudokuBoard::getValues() {
+
+    
+
 };
 
 int main(){
     SudokuBoard s = SudokuBoard();
-    vector<vector<int>> vals = s.getValues();
-    cout << to_string(vals[0][0]) << endl;
+    s.getValues();
 };
