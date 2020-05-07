@@ -22,7 +22,11 @@ SudokuBoard::SudokuBoard() {
 
 auto SudokuBoard::getValues() {
 
-    
+    cout << &values << endl;
+    cout << values << endl;
+    cout << *values << endl;
+    cout << values[1] << endl;
+    cout << **values << endl;
 
 };
 
