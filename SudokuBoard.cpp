@@ -4,6 +4,7 @@
 #include <vector>
 
 using namespace std;
+using T = int[9][9];
 
 SudokuBoard::SudokuBoard() {
 
@@ -20,17 +21,21 @@ SudokuBoard::SudokuBoard() {
     cout << values[8][8] << endl;
 };
 
-auto SudokuBoard::getValues() {
+SudokuBoard::SudokuBoard(T vals) {
+    T& tmp = values;
+    delete tmp;
+    **values = **vals;
+    cout << values[8][8] << endl;
+}
 
-    cout << &values << endl;
-    cout << values << endl;
-    cout << *values << endl;
-    cout << values[1] << endl;
-    cout << **values << endl;
-
+T& SudokuBoard::getValues() {
+    return values;
 };
 
 int main(){
-    SudokuBoard s = SudokuBoard();
-    s.getValues();
+    int vals[9][9];
+    vals[8][8] = 177;
+    SudokuBoard s = SudokuBoard(vals);
+    auto vlu = s.getValues();
+    cout << vlu[8][8] << endl;
 };

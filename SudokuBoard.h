@@ -1,5 +1,6 @@
 #include <vector>
 using namespace std;
+using T = int[9][9];
 
 class SudokuBoard
 
@@ -9,10 +10,12 @@ class SudokuBoard
 
         SudokuBoard();
 
-        auto getValues();
+        SudokuBoard(T vals);
+
+        T& getValues();
     
     private:
-
+        
         int values[9][9];
 
 };
