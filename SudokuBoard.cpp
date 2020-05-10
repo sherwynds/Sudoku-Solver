@@ -14,7 +14,7 @@ SudokuBoard::SudokuBoard() {
     for(int i = 0; i < numCols; i++) {
         vector<int> tmp;
         for(int j = 0; j < numRows; j++) {
-            tmp.push_back(-1);
+            tmp.push_back(0);
         }
         values.push_back(tmp);
     }
@@ -24,6 +24,18 @@ SudokuBoard::SudokuBoard() {
 
 SudokuBoard::SudokuBoard(vector<vector<int>> vals) {
     values = vals;
+}
+
+void SudokuBoard::printBoard() {
+    int numCols = values.size();
+    int numRows = values[0].size();
+    for(int i = 0; i < numRows; i++) {
+        string row;
+        for(int j = 0; j < numCols; j++) {
+            row.append(" " + to_string(values[j][i]));
+        }
+        cout << row << endl;
+    }
 }
 
 void SudokuBoard::setValue(int col, int row, int value) {
