@@ -1,5 +1,5 @@
 #include "SudokuBoard.h"
-#include "Algorithms/DFSPruning.h"
+#include "Algorithms/DFS.h"
 #include <iostream>
 #include <string>
 #include <vector>
