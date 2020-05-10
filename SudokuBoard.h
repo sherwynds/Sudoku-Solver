@@ -1,6 +1,5 @@
 #include <vector>
 using namespace std;
-using T = int[9][9];
 
 class SudokuBoard
 
@@ -9,13 +8,12 @@ class SudokuBoard
     public:
 
         SudokuBoard();
+        SudokuBoard(vector<vector<int>> vals);
 
-        SudokuBoard(T vals);
-
-        T& getValues();
+        vector<vector<int>>* getValues();
     
     private:
         
-        int values[9][9];
+        vector<vector<int>> values;
 
 };
