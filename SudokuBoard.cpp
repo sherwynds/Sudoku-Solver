@@ -21,10 +21,26 @@ SudokuBoard::SudokuBoard() {
     }
 
     cout << values[8][8] << endl;
-};
+}
 
 SudokuBoard::SudokuBoard(vector<vector<int>> vals) {
     values = vals;
+}
+
+void SudokuBoard::setValue(int col, int row, int value) {
+    int maxCol = values.size() - 1;
+    int maxRow = values[0].size() - 1;
+    int maxVal = 9;
+    int minVal = 1;
+    if(col < 0 || col > maxCol) {
+        cout << "column out of range" << endl;
+    } else if (row < 0 || row > maxRow) {
+        cout << "row out of range" << endl;
+    } else if (value < minVal || value > maxVal) {
+        cout << "value must be in range 1 - 9" << endl;
+    } else {
+        values[col][row] = value;
+    }
 }
 
 vector<vector<int>>* SudokuBoard::getValues() {
@@ -33,17 +49,7 @@ vector<vector<int>>* SudokuBoard::getValues() {
 
 int main(){
     SudokuBoard s = SudokuBoard();
-    T* vals = s.getValues();
-    cout << (*vals)[8][8] << endl;
-    T vals2;
-    for(int i = 0; i < 9; i++) {
-        vector<int> tmp;
-        for(int j = 0; j < 9; j++) {
-            tmp.push_back(101);
-        }
-        vals2.push_back(tmp);
-    }
-    SudokuBoard s2 = SudokuBoard(vals2);
-    T* vals2p = s2.getValues();
-    cout << (*vals2p)[8][8] << endl;
-};
+    s.setValue(7, 3, 3);
+    vector<vector<int>>* svals = s.getValues();
+    cout << (*svals)[7][3] << endl;
+}
