@@ -8,6 +8,6 @@
  ** Absolute path would look something like *C:\Users\Username\Path-to-directory\board1.txt*
  ** Relative path would look something like *board1.txt*, if it exists in the same directory
  * Sit back and relax as your puzzle is solved!
- Currently tested on Windows 10, plans for Linux release in the future.
  
+ Currently tested on Windows 10, plans for Linux release in the future.
  For sample *.txt puzzles, try http://lipas.uwasa.fi/~timan/sudoku/ (Credits to Timo Mantere and Janne Koljonen, University of Vaasa)
