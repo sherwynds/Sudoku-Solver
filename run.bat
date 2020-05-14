@@ -1,2 +1,2 @@
-cl Main.cpp SudokuBoard.cpp
+cl Main.cpp
 .\Main.exe
