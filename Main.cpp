@@ -18,16 +18,40 @@ void printBoard(int board[SIZE][SIZE]) {
 	for(int row = 0; row < SIZE; row++) {
 		string line;
 		for(int col = 0; col < SIZE; col++) {
-			line.append(to_string(board[row][col]) + SPACE);
+			if (col == 0) {
+				line.append("| ");
+			}
+			if (col % 3 == 2) {
+				line.append(to_string(board[row][col]) + " | ");
+			} else {
+				line.append(to_string(board[row][col]) + SPACE);
+			}
 		}
 		lines.push_back(line);
 	}
 
-	cout << "\n" << endl;
+	string hEdge  = "-------------------------";
+	cout << hEdge << endl;
 	for(int i = 0; i < lines.size(); i++) {
 		cout << lines[i] << endl;
+		if(i % 3 == 2) {
+			cout << hEdge << endl;
+		}
 	}
-	cout << "\n" << endl;
+	cout << endl;
+}
+
+// Returns boolean: whether it is legal to place number in given sub-board starting at rowStart, colStart
+bool gridUsed(int board[SIZE][SIZE], int rowStart, int colStart, int num) {
+	int subSize = SIZE/3;
+	for (int row = 0; row < subSize; row++) {
+		for (int col = 0; col < subSize; col++) {
+			if (board[rowStart + row][colStart + col] == num) {
+				return false;
+			}
+		}
+	}
+	return true;
 }
 
 // Returns boolean: whether it is legal to place number in given row
@@ -45,19 +69,6 @@ bool colUsed(int board[SIZE][SIZE], int col, int num) {
 	for (int row = 0; row < SIZE; row++) {
 		if (board[row][col] == num) {
 			return false;
-		}
-	}
-	return true;
-}
-
-// Returns boolean: whether it is legal to place number in given sub-board starting at rowStart, colStart
-bool gridUsed(int board[SIZE][SIZE], int rowStart, int colStart, int num) {
-	int subSize = SIZE/3;
-	for (int row = 0; row < subSize; row++) {
-		for (int col = 0; col < subSize; col++) {
-			if (board[rowStart + row][colStart + col] == num) {
-				return false;
-			}
 		}
 	}
 	return true;
@@ -108,8 +119,14 @@ bool solveDFS(int board[SIZE][SIZE]) {
 
 int main() {
 
-	cout << "Input:" << endl;
+	// Get user to input a text file containing the puzzle to be solved
+	string path;
+	cout << "Welcome to Sudoku Solver! Please enter path to file:" << endl;
+	getline(cin, path);
+	cout << endl;
+	cout << "Path entered: " << path << endl;
 
+	// Initialize the game board
 	int board[SIZE][SIZE] = {{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 						     { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 						     { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -119,9 +136,12 @@ int main() {
 						     { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 						     { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 						     { 0, 0, 0, 0, 0, 0, 0, 0, 0 }};
-	ifstream f("solveableBoard1.txt");
+
+	// Read the input path, produce an error if it cannot be read properly
+	ifstream f(path);
 	if (!f) {
-		cout << "Error - file couldn't be opened!" << endl;
+		cout << endl;
+		cout << "Error - file couldn't be opened! Please enter a correct absolute or relative path next time." << endl;
 		return 1;
 	} else {
 		for(int row = 0; row < SIZE; row++) {
@@ -135,15 +155,18 @@ int main() {
 		}
 	}
 
+	// Print the input board
+	cout << endl;
+	cout << "Input:" << endl;
 	printBoard(board);
 
+	// Print the output board
 	cout << "Output:" << endl;
-
 	if (solveDFS(board)) {
 		printBoard(board);
 	} else {
 		cout << "No solution found!" << endl;
 	}
-
+	
 	return 0;
 }
