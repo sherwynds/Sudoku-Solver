@@ -10,4 +10,5 @@
  * Sit back and relax as your puzzle is solved!
  
  Currently tested on Windows 10, plans for Linux release in the future.
+ 
  For sample *.txt puzzles, try http://lipas.uwasa.fi/~timan/sudoku/ (Credits to Timo Mantere and Janne Koljonen, University of Vaasa)
